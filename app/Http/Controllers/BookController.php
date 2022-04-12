@@ -98,9 +98,10 @@ class BookController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $book=Book::findOrFail($id);
+        
+        $book=Book::find($id);
 
-        // $data=$request->all();
+        // // $data=$request->all();
 
         $request->validate([
             'title'=>'required',
@@ -108,11 +109,7 @@ class BookController extends Controller
             'description'=>'required'
 
         ]);
-        // $book = new  Book;
-        // $book->title  = $request->title;
-        // $book->author  = $request->author;
-        // $book->description  = $request->description;
-        // $book->user_id = Auth::id();
+       
         if(isset($request->title)){
             $book->title = $request->title;            
         }
@@ -124,8 +121,11 @@ class BookController extends Controller
         }
 
 
-        $book->save();
+        $book->update($request->all());
         return view('welcome');
+
+
+
     }
 
     /**

@@ -33,7 +33,7 @@ Route::group(['middleware'=>'auth:sanctum'],function(){
 Route::apiResource('book', BookController::class);
 
 //delete route
-// Route::post('/book/{id}', [BookController::class,'destroy']);
+// Route::post('/book/{id}', [BookController::class,'update']);
 
 
 Route::post('/login', [AuthController::class,'index']);
